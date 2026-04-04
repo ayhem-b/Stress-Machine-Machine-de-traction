@@ -40,9 +40,8 @@ The data is recorded and used to analyze the material.
 
 ## Notes
 
-Make sure the sample is fixed properly before starting.
-Do not exceed the load limit of the machine.
+STILL in DEV
 
-## Author
+## Author      
 
-Made for laboratory testing of plastic materials.
+Ayhem Belkhamsa
