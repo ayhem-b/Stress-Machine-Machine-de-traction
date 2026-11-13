@@ -1,47 +1,43 @@
-# Plastic Stress Testing Machine (PE & PVC)
+# Plastic Tensile Testing Machine (PE & PVC)
 
-## Overview
+A laboratory **tensile (traction) testing machine** I designed and built to characterise polyethylene (PE) and PVC samples: it pulls a specimen at a controlled speed, measures the force with a load cell, and plots the **stress / strain curve live** on a custom C# interface that also produces a PDF test report.
 
-This project is a laboratory stress testing machine made to test polyethylene (PE) and polyvinyl chloride (PVC) materials. It applies force to a sample and measures how the material reacts under stress.
-
-## Purpose
-
-The goal of this machine is to study the mechanical behavior of PE and PVC, such as strength and deformation, in a controlled lab environment.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ayhem-b/Ayhem-portfolio/main/assets/images/tensile-rig-finished.jpg" alt="Finished tensile rig with its control box" height="300">
+  <img src="https://raw.githubusercontent.com/ayhem-b/Ayhem-portfolio/main/assets/images/tensile-rig-frame-build.jpg" alt="Frame assembly in progress" height="300">
+  <img src="https://raw.githubusercontent.com/ayhem-b/Ayhem-portfolio/main/assets/images/tensile-rig-schematic.jpg" alt="Control panel schematic" height="300">
+</p>
 
 ## How it works
 
-A plastic sample is fixed between two grips.
-A motor or actuator applies force to the sample.
-A load cell measures the force applied.
-The data is recorded and used to analyze the material.
+1. The specimen is clamped between two grips.
+2. A **servo motor** drives the crosshead; a **Mitsubishi FX PLC** controls speed, limits and the test sequence.
+3. A **load cell** measures the applied force; the PLC scales it linearly and exposes force and position in data registers.
+4. The **C# WinForms HMI** (MX Component link) reads the registers in real time, draws elongation (%) vs stress (MPa), and exports a PDF report.
+5. The test stops at specimen failure or at the configured limit.
 
 ## Main components
 
-* Frame (metal structure)
-* Servo-Motor 
-* Load cell
-* PLC
-* Power supply
-* Clamps to hold the sample
+| Part | Role |
+|---|---|
+| Welded steel frame, two columns, crosshead | Structure, reaction forces |
+| Servo motor + drive | Controlled displacement |
+| Load cell + amplifier | Force measurement |
+| Mitsubishi FX PLC | Sequence, limits, scaling |
+| Control box (buttons, HMI PC link) | Operation |
+| Clamps / grips | Specimen holding |
 
-## Usage
+## Software
 
-1. Place the sample between the grips
-2. Start the machine
-3. Apply force gradually
-4. Record the data
-5. Stop the test when the sample fails or reaches the limit
+The HMI source (C#, .NET Framework 4.7.2, MX Component, iTextSharp) lives in a separate repository, **Stress-Machine**, which is private; access on request.
 
 ## Applications
 
-* Laboratory testing
-* Material research
-* Quality control for plastic products
+Laboratory testing, material research, incoming quality control for plastic products.
 
-## Notes
+## Status
 
-STILL in DEV
+Built and commissioned; the software is still being refined (report layout, additional test modes).
 
-## Author      
-
-Ayhem Belkhamsa
+---
+*Ayhem Belkhamsa — industrial automation engineer, Bizerte, Tunisia · [portfolio](https://ayhem-b.github.io/Ayhem-portfolio/)*
